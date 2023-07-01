@@ -28,6 +28,16 @@ services:
       - 8080:8080
     depends_on:
       - activities-db
+  
+  activities-frontend:
+    image: andrejtodorovski5/activities-frontend:latest
+    container_name: activities-frontend
+    pull_policy: always
+    ports:
+      - 4200:80
+    depends_on:
+      - activities-app
+
 
 volumes:
   postgres-data:
