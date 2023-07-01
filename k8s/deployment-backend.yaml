@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  namespace: activities
+spec:
+  selector:
+    matchLabels:
+      app: backend
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: backend
+          image: andrejtodorovski5/activities:latest
+          imagePullPolicy: Always
+          ports:
+          - containerPort: 8080
+          env:
+          - name: SPRING_DATASOURCE_URL
+            value: jdbc:postgresql://activities-db:5432/activities
+          - name: SPRING_DATASOURCE_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: activities-secret
+                key: POSTGRES_USER
+          - name: SPRING_DATASOURCE_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: activities-secret
+                key: POSTGRES_PASSWORD
+          - name: SPRING_JPA_HIBERNATE_DDL_AUTO
+            valueFrom:
+              configMapKeyRef:
+                name: activities-configmap
+                key: SPRING_JPA_HIBERNATE_DDL_AUTO
+          - name: SPRING_JPA_SHOW_SQL
+            valueFrom:
+              configMapKeyRef:
+                name: activities-configmap
+                key: SPRING_JPA_SHOW_SQL
+      imagePullSecrets:
+      - name: activities-secret

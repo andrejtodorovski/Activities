@@ -7,7 +7,7 @@ import { Game } from './game';
   providedIn: 'root',
 })
 export class GameService {
-  getGamesUrl = 'http://localhost:8080/api/games';
+  getGamesUrl = 'http://localhost:80/api/games';
   constructor(private http: HttpClient) {}
   getGames(): Observable<Game[]> {
     return this.http.get<Game[]>(this.getGamesUrl);
