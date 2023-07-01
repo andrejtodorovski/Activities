@@ -27,11 +27,12 @@ jobs:
         java-version: 17
         
     - name: Wait for PostgreSQL to start
-      run: sleep 10
+      run: sleep 5
       
     - name: Build Spring Boot Application
       run: |
         cd backend
+        chmod +x ./mvnw
         ./mvnw clean package -DskipTests
         
     - name: Login to DockerHub
