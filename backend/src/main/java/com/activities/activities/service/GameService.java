@@ -2,22 +2,14 @@ package com.activities.activities.service;
 
 import com.activities.activities.model.Game;
 import com.activities.activities.repository.GameRepository;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Service;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Paths;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.Instant;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
-import java.util.Scanner;
 
 @Service
 public class GameService {
@@ -58,5 +50,8 @@ public class GameService {
         ObjectMapper mapper = new ObjectMapper();
         Game[] games = mapper.readValue(Paths.get("app/jsonData/games.json").toFile(), Game[].class);
         gameRepository.saveAll(Arrays.asList(games));
+    }
+    public List<String> getGenres() {
+        return gameRepository.findAll().stream().map(Game::getGenre).distinct().toList();
     }
 }

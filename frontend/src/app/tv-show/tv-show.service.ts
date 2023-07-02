@@ -13,4 +13,10 @@ export class TVShowService {
   getShows(): Observable<Show[]> {
     return this.http.get<Show[]>(this.getShowUrl);
   }
+  getShowsWithRatingAbove(rating: number): Observable<Show[]> {
+    return this.http.get<Show[]>(this.getShowUrl + '/rating/' + rating);
+  }
+  getShow(id: number): Observable<Show> {
+    return this.http.get<Show>(this.getShowUrl + '/' + id);
+  }
 }

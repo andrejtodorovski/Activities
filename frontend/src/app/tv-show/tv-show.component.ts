@@ -22,4 +22,9 @@ export class TvShowComponent implements OnInit {
       shows => this.shows = shows,
     );   
   }
+  getAllByRating(event: Event): void {
+    this.tvShowService.getShowsWithRatingAbove(parseFloat((event.target as HTMLInputElement).value)).subscribe(
+      shows => this.shows = shows,
+    );   
+  }
 }

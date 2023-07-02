@@ -57,7 +57,11 @@ public class GameController {
     }
 
     @GetMapping("/dataFromJson")
-    public void dataFromJson() throws IOException, ParseException {
+    public void dataFromJson() throws IOException {
         gameService.dataFromJson();
+    }
+    @GetMapping("/genres")
+    public List<String> findAllGenres()  {
+        return gameService.getGenres();
     }
 }

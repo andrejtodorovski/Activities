@@ -1,4 +1,6 @@
-<div class="container">
+<div class="container pt-5">
+    <label for="rating">Find with Rating above: </label>
+    <input type="number" id="rating" (change)="getAllByRating($event)" class="form-control">
     <div class="row pb-5 pt-5" *ngFor="let show of shows">
         <div class="col-4">
             <img src="{{show.image}}" alt="{{show.name}}" class="img-fluid">
