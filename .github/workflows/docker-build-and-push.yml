@@ -81,7 +81,7 @@ jobs:
 
     - name: Configure Kubernetes context
       run: |
-        kubectl config use-context kiii
+        kubectl config use-context k3d-kiii
 
     - name: Deploy to Kubernetes
       run: |
