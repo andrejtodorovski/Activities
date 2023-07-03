@@ -67,7 +67,7 @@ jobs:
 
   deploy:
     needs: [build-backend, build-frontend]
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
     - name: Checkout code
