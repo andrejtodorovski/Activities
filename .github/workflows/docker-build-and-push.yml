@@ -77,7 +77,14 @@ jobs:
       uses: azure/setup-kubectl@v1
       with:
         version: 'latest'
-
+    
+    - name: Configure kubeconfig from secret
+      env:
+        KUBECONFIG_FILE: ${{ secrets.KUBECONFIG }}
+      run: |
+        echo "$KUBECONFIG_FILE" > ./kubeconfig
+        export KUBECONFIG=./kubeconfig
+    
     - name: Configure Kubernetes context
       run: |
         kubectl config use-context k3d-kiii
