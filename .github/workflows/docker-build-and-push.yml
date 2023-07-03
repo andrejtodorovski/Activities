@@ -80,12 +80,6 @@ jobs:
       with:
         version: 'latest'
     
-    - name: Configure kubeconfig from secret
-      env:
-        KUBECONFIG: ${{ secrets.KUBECONFIG }}
-      run: |
-        echo "$KUBECONFIG" > ./kubeconfig
-        export KUBECONFIG=./kubeconfig
     - name: Configure Kubernetes context
       run: |
         kubectl config use-context k3d-kiii
