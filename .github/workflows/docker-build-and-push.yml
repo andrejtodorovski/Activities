@@ -1,8 +1,10 @@
 name: Build and Push Docker images
+
 on:
   push:
     branches:
       - main
+      
 jobs:
   build-backend:
     runs-on: ubuntu-latest
