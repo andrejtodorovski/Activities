@@ -5,5 +5,3 @@ metadata:
   namespace: activities
 data:
   POSTGRES_DB: activities
-  SPRING_JPA_HIBERNATE_DDL_AUTO: update
-  SPRING_JPA_SHOW_SQL: "false"
