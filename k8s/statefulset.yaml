@@ -9,6 +9,15 @@ spec:
   selector:
     matchLabels:
       app: activities-db
+  volumeClaimTemplates:
+  - metadata:
+      name: activities-db-storage
+    spec:
+      accessModes: ["ReadWriteOnce"]
+      storageClassName: my-storage-class
+      resources:
+        requests:
+          storage: 1Gi
   template:
     metadata:
       labels:
